@@ -1,0 +1,5 @@
+name: "OWASP - Broken Object Level Authorization (BOLA)"
+description: "Detects a single authenticated user accessing multiple distinct user profile IDs in a short timeframe."
+search: "index=main sourcetype=nginx:json uri_path=\"/api/v1/profile*\" status=200 | stats dcount(uri_path) as distinct_profiles by remote_ip, auth_user | where distinct_profiles > 10"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
