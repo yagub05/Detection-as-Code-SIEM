@@ -1,0 +1,5 @@
+name: "OWASP - Web Authentication Brute Force"
+description: "Detects high volume of failed login attempts (401/403) to the API login endpoint from a single IP."
+search: "index=main sourcetype=nginx:json uri_path=\"/api/login\" (status=401 OR status=403) | stats count by remote_ip | where count > 20"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
