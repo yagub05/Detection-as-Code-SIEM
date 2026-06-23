@@ -1,0 +1,5 @@
+name: "Policy - Unauthorized Intranet Access Attempt"
+description: "Detects non-VPN access attempts to the intranet subdomain."
+search: "index=main sourcetype=nginx:json host=\"intranet.kibertehlukesizlik.space\" NOT (remote_ip=10.8.0.* OR remote_ip=127.0.0.1)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
