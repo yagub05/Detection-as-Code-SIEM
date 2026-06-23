@@ -1,0 +1,5 @@
+name: "OWASP - Potential DDoS / Flood Attack"
+description: "Triggers when an anomalous volume of requests comes from a single IP addresses within 1 minute."
+search: "index=main sourcetype=nginx:json | bucket _time span=1m | stats count by remote_ip, _time | where count > 500"
+cron_schedule: "*/2 * * * *"
+disabled: "0"
