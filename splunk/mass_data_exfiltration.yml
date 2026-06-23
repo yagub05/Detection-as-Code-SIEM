@@ -1,0 +1,5 @@
+name: "OWASP - Potential Mass Data Exfiltration"
+description: "Detects abnormally large data payloads sent in HTTP responses to a single client."
+search: "index=main sourcetype=nginx:json | stats sum(bytes_sent) as total_bytes by remote_ip | where total_bytes > 104857600"
+cron_schedule: "*/10 * * * *"
+disabled: "0"
