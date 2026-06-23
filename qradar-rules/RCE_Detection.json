@@ -1,0 +1,7 @@
+{
+  "name": "QRadar - Remote Code Execution Attempt",
+  "description": "Detects system command execution attempts via web application vulnerabilities",
+  "aql_query": "SELECT sourceip, url FROM events WHERE (url LIKE '%whoami%' OR url LIKE '%id%' OR url LIKE '%cmd.exe%' OR url LIKE '%/bin/sh%') AND sensecategory = 2001",
+  "severity": 9,
+  "type": "Custom Rule"
+}
