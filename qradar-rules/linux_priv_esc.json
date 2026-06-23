@@ -1,0 +1,7 @@
+{
+  "name": "QRadar - Linux Privilege Escalation",
+  "description": "Detects unauthorized sudo executions or suspicious root activities",
+  "aql_query": "SELECT sourceip, username, payload FROM events WHERE qid = 5000084 AND (payload LIKE '%sudo: auth failure%' OR payload LIKE '%chmod +x%')",
+  "severity": 8,
+  "type": "Custom Rule"
+}
