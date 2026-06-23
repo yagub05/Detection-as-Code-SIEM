@@ -1,0 +1,7 @@
+{
+  "name": "QRadar - SSH Brute Force Detection",
+  "description": "Detects high volume of failed SSH login attempts from a single IP",
+  "aql_query": "SELECT sourceip, COUNT(*) FROM events WHERE qid = 5000023 AND payload LIKE '%Failed password%' GROUP BY sourceip HAVING COUNT(*) > 10 TIMESPAN 1m",
+  "severity": 6,
+  "type": "Custom Rule"
+}
