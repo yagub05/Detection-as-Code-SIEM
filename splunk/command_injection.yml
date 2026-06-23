@@ -1,0 +1,5 @@
+name: "OWASP - Remote Command Injection Attempt"
+description: "Detects system command execution patterns within web request arguments."
+search: "index=main sourcetype=nginx:json (request=*whoami* OR request=*id* OR request=*/bin/sh* OR request=*ping%20*) "
+cron_schedule: "*/5 * * * *"
+disabled: "0"
