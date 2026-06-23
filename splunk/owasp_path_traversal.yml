@@ -1,0 +1,5 @@
+name: "OWASP - Path Traversal Attack"
+description: "Detects directory traversal attempts targeting sensitive system files."
+search: "index=main sourcetype=nginx:json (request=*../* OR request=*/etc/passwd OR request=*win.ini*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
