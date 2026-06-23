@@ -1,0 +1,5 @@
+name: "OWASP - Server-Side Request Forgery (SSRF) Attempt"
+description: "Detects internal network metadata addresses or localhost references inside URI queries."
+search: "index=main sourcetype=nginx:json (request=*169.254.169.254* OR request=*localhost* OR request=*127.0.0.1*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
