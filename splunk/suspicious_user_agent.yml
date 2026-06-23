@@ -1,0 +1,5 @@
+name: "Reconnaissance - Malicious Automated User-Agent"
+description: "Detects known attack tools and scanners based on User-Agent header string."
+search: "index=main sourcetype=nginx:json (user_agent=*sqlmap* OR user_agent=*nikto* OR user_agent=*nmap* OR user_agent=*dirbuster* OR user_agent=*acunetix*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
