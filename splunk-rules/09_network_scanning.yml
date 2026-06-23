@@ -1,0 +1,5 @@
+name: "Reconnaissance - Network Scanning Detection"
+description: "Detects automated network scanner signatures like nmap, masscan, zgrab."
+search: "index=main sourcetype=nginx:json (user_agent=*nmap* OR user_agent=*masscan* OR user_agent=*zgrab*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
