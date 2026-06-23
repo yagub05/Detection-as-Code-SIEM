@@ -1,0 +1,5 @@
+name: "OWASP - Path Traversal Detection"
+description: "Detects directory traversal sequences (../) in URLs."
+search: "index=main sourcetype=nginx:json request=*../*"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
