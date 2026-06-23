@@ -1,0 +1,5 @@
+name: "Infrastructure - SSH Brute Force Attempt"
+description: "Detects multiple failed SSH login attempts followed by a potential risk within 5 minutes."
+search: "index=main sourcetype=syslog \"Failed password for\" | stats count by src_ip | where count > 10"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
