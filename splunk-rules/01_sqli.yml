@@ -1,0 +1,5 @@
+name: "OWASP - SQL Injection Detection"
+description: "Detects SQL Injection payloads (UNION, SELECT, DROP) using Regex and urldecode."
+search: "index=main sourcetype=nginx:json (request=*UNION* OR request=*SELECT* OR request=*DROP*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
