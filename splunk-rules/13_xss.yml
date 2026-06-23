@@ -1,0 +1,5 @@
+name: "OWASP - XSS Attack Detection"
+description: "Detects Cross-Site Scripting scripts tags and alert triggers."
+search: "index=main sourcetype=nginx:json (request=*<script>* OR request=*alert(*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
