@@ -1,0 +1,5 @@
+name: "Sistem - SSH Brute Force Detection"
+description: "Detects multiple failed SSH connections grouping by source IP address."
+search: "index=main sourcetype=syslog \"Failed password for\" | stats count by src_ip | where count > 10"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
