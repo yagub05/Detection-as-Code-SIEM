@@ -1,0 +1,32 @@
+name: Detection-as-Code Splunk Sync
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-splunk:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install pyyaml requests
+
+    - name: Push Rules to Splunk
+      env:
+        SPLUNK_HOST: "34.12.157.61"
+        SPLUNK_PORT: "8089"
+        SPLUNK_USER: "admin"
+        SPLUNK_PASSWORD: ${{ secrets.SPLUNK_PASSWORD }}
+      run: |
+        python scripts/push_rules_to_splunk.py
