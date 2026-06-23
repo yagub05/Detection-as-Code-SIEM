@@ -1,0 +1,5 @@
+name: "OWASP - Sensitive File Access Detection"
+description: "Detects unauthorized requests to critical files (/etc/passwd, .env, config.php)."
+search: "index=main sourcetype=nginx:json (request=*passwd* OR request=*.env* OR request=*config.php*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
