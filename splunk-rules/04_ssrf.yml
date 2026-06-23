@@ -1,0 +1,5 @@
+name: "OWASP - SSRF Detection"
+description: "Detects unauthorized requests pointing to internal network resources or metadata endpoints."
+search: "index=main sourcetype=nginx:json (request=*169.254.169.254* OR request=*localhost*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
