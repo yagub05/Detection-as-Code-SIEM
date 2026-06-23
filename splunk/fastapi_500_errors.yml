@@ -1,0 +1,5 @@
+name: "OWASP - Mass Internal Server Errors (A6:Vulnerable Components)"
+description: "Detects spikes in HTTP 500 errors from FastAPI backend, indicating possible exploit or crash."
+search: "index=main sourcetype=nginx:json status=500 upstream_status=500 | stats count by uri_path | where count > 10"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
