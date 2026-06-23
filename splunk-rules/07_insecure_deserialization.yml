@@ -1,0 +1,5 @@
+name: "OWASP - Insecure Deserialization Detection"
+description: "Detects suspicious serialized objects and Java/Python serialization signatures in parameters."
+search: "index=main sourcetype=nginx:json (request=*rO0AB* OR request=*py/object*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
