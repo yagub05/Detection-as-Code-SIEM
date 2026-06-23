@@ -1,0 +1,5 @@
+name: "OWASP - IDOR Vulnerability Detection"
+description: "Detects user ID manipulation inside request paths using parameter matching."
+search: "index=main sourcetype=nginx:json uri_path=\"/api/v1/profile*\" | stats dcount(uri_path) as id_count by remote_ip | where id_count > 10"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
