@@ -1,0 +1,7 @@
+{
+  "name": "QRadar - Local File Inclusion Detection",
+  "description": "Detects LFI directory traversal attempts in web server requests",
+  "aql_query": "SELECT sourceip, url FROM events WHERE (url LIKE '%/etc/passwd%' OR url LIKE '%../../%') AND sensecategory = 2001",
+  "severity": 7,
+  "type": "Custom Rule"
+}
