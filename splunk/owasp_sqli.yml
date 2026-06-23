@@ -1,0 +1,5 @@
+name: "OWASP - SQL Injection Attempt Detected"
+description: "Detects classic SQL injection patterns in HTTP request URI and arguments."
+search: "index=main sourcetype=nginx:json (request=*UNION* OR request=*SELECT* OR request=*--* OR request=*OR*1=1*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
