@@ -1,0 +1,5 @@
+name: "OWASP - Command Injection Detection"
+description: "Detects execution of system commands such as whoami, cat, id in web requests."
+search: "index=main sourcetype=nginx:json (request=*whoami* OR request=*cat%20* OR request=*id*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
