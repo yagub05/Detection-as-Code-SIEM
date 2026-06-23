@@ -1,0 +1,5 @@
+name: "Sistem - Linux Privilege Escalation Detection"
+description: "Detects privilege escalation attempts via system commands execution (sudo, chmod, passwd)."
+search: "index=main sourcetype=syslog (process=sudo OR process=chmod OR process=passwd) \"COMMAND=\""
+cron_schedule: "*/5 * * * *"
+disabled: "0"
