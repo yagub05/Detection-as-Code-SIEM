@@ -1,0 +1,5 @@
+name: "OWASP - Cross-Site Scripting (XSS) Attempt"
+description: "Detects XSS payloads including script tags and event handlers in web requests."
+search: "index=main sourcetype=nginx:json (request=*<script>* OR request=*javascript:* OR request=*onerror=* OR request=*onload=*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
