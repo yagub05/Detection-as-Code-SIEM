@@ -1,0 +1,7 @@
+{
+  "name": "QRadar - SSRF Attack Attempt",
+  "description": "Detects Server-Side Request Forgery targeting cloud metadata or internal network",
+  "aql_query": "SELECT sourceip, url FROM events WHERE (url LIKE '%169.254.169.254%' OR url LIKE '%localhost%') AND sensecategory = 2001",
+  "severity": 8,
+  "type": "Custom Rule"
+}
