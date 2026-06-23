@@ -1,0 +1,5 @@
+name: "OWASP - Suspicious Privilege Escalation Attempt"
+description: "Detects unauthorized attempts to modify other users or call administrative roles via API."
+search: "index=main sourcetype=nginx:json uri_path=\"/api/v1/users*\" method=POST NOT (auth_user=\"admin\")"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
