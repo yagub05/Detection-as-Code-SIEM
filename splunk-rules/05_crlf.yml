@@ -1,0 +1,5 @@
+name: "OWASP - CRLF Injection Detection"
+description: "Detects carriage return line feed injections (%0d%0a) inside HTTP headers."
+search: "index=main sourcetype=nginx:json (request=*%0d%0a* OR request=*%0D%0A*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
