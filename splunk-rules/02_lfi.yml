@@ -1,0 +1,5 @@
+name: "OWASP - LFI Detection"
+description: "Detects Local File Inclusion targeting system files like /etc/shadow or boot.ini."
+search: "index=main sourcetype=nginx:json (request=*etc/shadow* OR request=*boot.ini*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
