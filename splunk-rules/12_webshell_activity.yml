@@ -1,0 +1,5 @@
+name: "OWASP - Webshell Activity Detection"
+description: "Detects dangerous function execution patterns common in webshells (shell_exec, system, passthru)."
+search: "index=main sourcetype=nginx:json (request=*shell_exec* OR request=*system(* OR request=*passthru*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
