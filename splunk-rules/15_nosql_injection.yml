@@ -1,0 +1,5 @@
+name: "OWASP - NoSQL Injection Detection"
+description: "Detects NoSQL injection operators ($gt, $ne, $where) inside web logs."
+search: "index=main sourcetype=nginx:json (request=*$gt* OR request=*$ne* OR request=*$where*)"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
