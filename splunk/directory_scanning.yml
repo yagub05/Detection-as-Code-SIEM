@@ -1,0 +1,5 @@
+name: "Reconnaissance - Web Directory Scanning"
+description: "Detects automated directory scanners (e.g., Dirbuster, GoBuster) generating massive 404 errors."
+search: "index=main sourcetype=nginx:json status=404 | stats count dcount(uri_path) as unique_paths by remote_ip | where unique_paths > 30"
+cron_schedule: "*/5 * * * *"
+disabled: "0"
