@@ -1,7 +1,7 @@
 {
   "name": "QRadar - Malicious PowerShell Execution",
   "description": "Detects obfuscated or encoded PowerShell commands often used by attackers",
-  "aql_query": "SELECT sourceip, payload FROM events WHERE payload LIKE '%-EncodedCommand%' OR payload LIKE '%-nop%' OR payload LIKE '%Bypass%'",
+  "aql_query": "SELECT sourceip, payload FROM events WHERE UTF8(payload) LIKE '%-EncodedCommand%' OR UTF8(payload) LIKE '%-nop%' OR UTF8(payload) LIKE '%Bypass%'",
   "severity": 7,
   "type": "Custom Rule"
 }
