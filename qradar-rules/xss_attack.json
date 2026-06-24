@@ -1,7 +1,7 @@
 {
   "name": "QRadar - XSS Attack Detection",
   "description": "Detects Cross-Site Scripting attempts in HTTP traffic payloads",
-  "aql_query": "SELECT sourceip, destinationip, url FROM events WHERE (payload LIKE '%<script>%' OR payload LIKE '%javascript:%') AND sensecategory = 2001",
+  "aql_query": "SELECT sourceip, destinationip, url FROM events WHERE (UTF8(payload) LIKE '%<script>%' OR UTF8(payload) LIKE '%javascript:%')",
   "severity": 6,
   "type": "Custom Rule"
 }
