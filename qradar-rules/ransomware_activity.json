@@ -1,7 +1,7 @@
 {
   "name": "QRadar - Ransomware Activity Indicators",
   "description": "Detects massive file modifications or suspicious extension changes",
-  "aql_query": "SELECT sourceip, COUNT(DISTINCT filename) FROM events WHERE (UTF8(payload) LIKE '%.locked' OR UTF8(payload) LIKE '%.crypto') GROUP BY sourceip HAVING COUNT(DISTINCT filename) > 100 LAST 2 MINUTES",
+  "aql_query": "SELECT sourceip, COUNT(*) AS event_count FROM events WHERE LOGSOURCETYPENAME(devicetype) LIKE '%' AND (UTF8(payload) LIKE '%.locked' OR UTF8(payload) LIKE '%.crypto') GROUP BY sourceip HAVING COUNT(*) > 100 LAST 2 MINUTES",
   "severity": 9,
   "type": "Custom Rule"
 }
