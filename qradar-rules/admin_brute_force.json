@@ -1,7 +1,7 @@
 {
   "name": "QRadar - Web Admin Panel Brute Force",
   "description": "Detects multiple failed login attempts to admin interfaces",
-  "aql_query": "SELECT sourceip, COUNT(*) FROM events WHERE (url LIKE '%/admin/login%' OR url LIKE '%/wp-login.php%') AND (payload LIKE '%failed%' OR payload LIKE '%unauthorized%') GROUP BY sourceip HAVING COUNT(*) > 20 TIMESPAN 3m",
+  "aql_query": "SELECT sourceip, COUNT(*) FROM events WHERE (url LIKE '%/admin/login%' OR url LIKE '%/wp-login.php%') AND (UTF8(payload) LIKE '%failed%' OR UTF8(payload) LIKE '%unauthorized%') GROUP BY sourceip HAVING COUNT(*) > 20 LAST 3 MINUTES",
   "severity": 6,
   "type": "Custom Rule"
 }
