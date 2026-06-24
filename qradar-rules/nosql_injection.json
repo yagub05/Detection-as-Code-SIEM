@@ -1,7 +1,7 @@
 {
   "name": "QRadar - NoSQL Injection Attempt",
   "description": "Detects MongoDB/NoSQL injection operators in application payloads",
-  "aql_query": "SELECT sourceip, url FROM events WHERE (payload LIKE '%$gt%' OR payload LIKE '%$ne%' OR payload LIKE '%$where%')",
+  "aql_query": "SELECT sourceip, url FROM events WHERE (UTF8(payload) LIKE '%$gt%' OR UTF8(payload) LIKE '%$ne%' OR UTF8(payload) LIKE '%$where%')",
   "severity": 7,
   "type": "Custom Rule"
 }
