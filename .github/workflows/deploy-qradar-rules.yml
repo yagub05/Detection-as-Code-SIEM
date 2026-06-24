@@ -30,7 +30,7 @@ jobs:
         env:
           QRADAR_HOST: ${{ secrets.QRADAR_HOST }}
           QRADAR_TOKEN: ${{ secrets.QRADAR_TOKEN }}
-          QRADAR_VERIFY_SSL: "true"
+          QRADAR_VERIFY_SSL: "false"
         run: |
           python scripts/push_rules_to_qradar.py --rules-dir qradar-rules
       - name: Upload deployment state
