@@ -1,0 +1,38 @@
+name: Deploy QRadar Rules
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "qradar_rules/**.json"
+      - "scripts/push_rules_to_qradar.py"
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Push rules to QRadar
+        env:
+          QRADAR_HOST: ${{ secrets.QRADAR_HOST }}
+          QRADAR_TOKEN: ${{ secrets.QRADAR_TOKEN }}
+          QRADAR_VERIFY_SSL: "true"
+        run: |
+          python scripts/push_rules_to_qradar.py --rules-dir qradar_rules
+
+      - name: Upload deployment state
+        uses: actions/upload-artifact@v4
+        with:
+          name: qradar-deployment-state
+          path: .qradar_state.json
