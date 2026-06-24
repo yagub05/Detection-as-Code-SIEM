@@ -1,7 +1,7 @@
 {
   "name": "QRadar - IDOR Vulnerability Exploitation",
   "description": "Detects potential Insecure Direct Object Reference by monitoring rapid parameter changes",
-  "aql_query": "SELECT sourceip, url, COUNT(*) FROM events WHERE url LIKE '%/user/%' GROUP BY sourceip HAVING COUNT(*) > 50 TIMESPAN 5m",
+  "aql_query": "SELECT sourceip, url, COUNT(*) FROM events WHERE url LIKE '%/user/%' GROUP BY sourceip HAVING COUNT(*) > 50 LAST 5 MINUTES",
   "severity": 5,
   "type": "Custom Rule"
 }
