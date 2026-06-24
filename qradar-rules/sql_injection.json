@@ -1,7 +1,7 @@
 {
   "name": "QRadar - SQL Injection Detection",
   "description": "Detects classic SQL injection attempts in web server access logs using AQL",
-  "aql_query": "SELECT sourceip, destinationip, url FROM events WHERE (payload LIKE '%UNION SELECT%' OR payload LIKE '%OR 1=1%') AND sensecategory = 2001",
+  "aql_query": "SELECT sourceip, destinationip, url FROM events WHERE (UTF8(payload) LIKE '%UNION SELECT%' OR UTF8(payload) LIKE '%OR 1=1%')",
   "severity": 7,
   "type": "Custom Rule"
 }
