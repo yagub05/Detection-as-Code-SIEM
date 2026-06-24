@@ -22,7 +22,14 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
-
+      - name: Debug paths
+        run: |
+          echo "=== Current directory ==="
+          pwd
+          echo "=== All files in root ==="
+          ls -la
+          echo "=== qradar_rules folder ==="
+          ls -la qradar_rules/
       - name: Push rules to QRadar
         env:
           QRADAR_HOST: ${{ secrets.QRADAR_HOST }}
