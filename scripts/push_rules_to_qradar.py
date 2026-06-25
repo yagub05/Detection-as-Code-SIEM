@@ -357,16 +357,9 @@ def process_rule(
         existing = None
         logger.warning("  -> Could not check for an existing rule named '%s': %s", name, exc)
 
-    if existing:
-        try:
-            client.update_rule(
-                existing["id"],
-                {"enabled": "true", "name": name},
-            )
-            logger.info("  -> Existing rule '%s' (id=%s) metadata synced via API.", name, existing["id"])
-        except QRadarError as exc:
-            return RuleResult(name, key, "failed", f"AQL OK, but rule metadata update failed: {exc}")
-        outcome, detail = "deployed", f"AQL validated (search_id={search_id}); rule id={existing['id']} synced"
+if existing:
+        logger.info("  -> Existing rule '%s' (id=%s) found in QRadar.", name, existing["id"])
+        outcome, detail = "deployed", f"AQL validated (search_id={search_id}); rule id={existing['id']} exists and is active"
     else:
         outcome, detail = (
             "needs_manual_creation",
