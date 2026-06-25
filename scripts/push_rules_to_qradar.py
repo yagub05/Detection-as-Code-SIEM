@@ -237,19 +237,19 @@ class QRadarClient:
         results = resp.json()
         return results[0] if results else None
 
-    def update_rule(self, rule_id: int, fields: dict) -> dict:
-    # First GET the full rule object
-    get_resp = self._request("GET", f"analytics/rules/{rule_id}")
-    if get_resp.status_code != 200:
-        raise QRadarError(f"Could not fetch rule {rule_id} (HTTP {get_resp.status_code})")
-    full_rule = get_resp.json()
-    # Merge our fields into the full object
-    full_rule.update(fields)
-    # POST the full object back
-    resp = self._request("POST", f"analytics/rules/{rule_id}", json=full_rule)
-    if resp.status_code not in (200, 201):
-        raise QRadarError(f"Rule update failed (HTTP {resp.status_code}): {resp.text[:500]}")
-    return resp.json()
+  def update_rule(self, rule_id: int, fields: dict) -> dict:
+        # First GET the full rule object
+        get_resp = self._request("GET", f"analytics/rules/{rule_id}")
+        if get_resp.status_code != 200:
+            raise QRadarError(f"Could not fetch rule {rule_id} (HTTP {get_resp.status_code})")
+        full_rule = get_resp.json()
+        # Merge our fields into the full object
+        full_rule.update(fields)
+        # POST the full object back
+        resp = self._request("POST", f"analytics/rules/{rule_id}", json=full_rule)
+        if resp.status_code not in (200, 201):
+            raise QRadarError(f"Rule update failed (HTTP {resp.status_code}): {resp.text[:500]}")
+        return resp.json()
 
 
 # ---------------------------------------------------------------------------
