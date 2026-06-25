@@ -237,7 +237,7 @@ class QRadarClient:
         results = resp.json()
         return results[0] if results else None
 
-  def update_rule(self, rule_id: int, fields: dict) -> dict:
+    def update_rule(self, rule_id: int, fields: dict) -> dict:
         # First GET the full rule object
         get_resp = self._request("GET", f"analytics/rules/{rule_id}")
         if get_resp.status_code != 200:
@@ -250,6 +250,8 @@ class QRadarClient:
         if resp.status_code not in (200, 201):
             raise QRadarError(f"Rule update failed (HTTP {resp.status_code}): {resp.text[:500]}")
         return resp.json()
+
+# ---------------------------------------------------------------------------
 
 
 # ---------------------------------------------------------------------------
