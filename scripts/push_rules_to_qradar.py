@@ -357,6 +357,7 @@ def process_rule(
         existing = None
         logger.warning("  -> Could not check for an existing rule named '%s': %s", name, exc)
 
+
 if existing:
         logger.info("  -> Existing rule '%s' (id=%s) found in QRadar.", name, existing["id"])
         outcome, detail = "deployed", f"AQL validated (search_id={search_id}); rule id={existing['id']} exists and is active"
